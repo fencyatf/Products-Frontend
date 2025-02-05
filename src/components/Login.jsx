@@ -12,35 +12,45 @@ const Login = ({onLogin}) => {
     //handleSubmit
     //request object
 
-    const handleSubmit = async(e) =>{
-        e.preventDefault()
-
-        //Client side validations
-        if(!email){
-            setErrorMessage("Please enter a valid email")
-            return
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+    
+        // Client-side validations
+        if (!email) {
+            setErrorMessage("Please enter a valid email");
+            return;
         }
-        if(!password || password.length <5){
-            setErrorMessage("Please enter a valid password")
-            return
+        if (!password || password.length < 5) {
+            setErrorMessage("Please enter a valid password");
+            return;
         }
-        //data to pass to API
-        const data={
-            email:email,
-            password:password
-        }
-        //API call
+    
+        // Data to pass to API
+        const data = {
+            email: email,
+            password: password
+        };
+    
+        // API call with CORS fix
         try {
-            const response = await axios.post("https://products-backend-hgk5.onrender.com/login",data)
-            console.log(response.data)
-            alert(response.data.message)
-            onLogin()
-            navigate('/products')
+            const response = await axios.post(
+                "https://products-backend-hgk5.onrender.com/login",
+                data,
+                {
+                    headers: { "Content-Type": "application/json" },
+                    withCredentials: true //  Important for cross-origin authentication
+                }
+            );
+            console.log(response.data);
+            alert(response.data.message);
+            onLogin();
+            navigate('/products');
         } catch (error) {
-            setErrorMessage(error.message)
-            console.log(error)
+            setErrorMessage(error.response ? error.response.data.error : "Login failed");
+            console.log("Login Error:", error);
         }
-    }
+    };
+    
 
   return (
     <Container className='d-flex justify-content-center align-items-center min-vh-100'>
