@@ -45,7 +45,7 @@ const Products = () => {
             <Card className="h-100 shadow-sm" style={{ height: '25rem', width: '18rem', transition: 'transform 0.3s', cursor: 'pointer' }}
               onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
               onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
-              <Card.Img variant="top" src={product.url} alt={product.name} style={{ height: '12rem', overflow: 'hidden' }} />
+              <Card.Img variant="top" src={product.url} alt={product.name} style={{ height: '12rem', objectFit: 'cover' }} />
               <Card.Body>
                 <Card.Title>{product.name}</Card.Title>
                 <Card.Text>{product.description}</Card.Text>

@@ -34,22 +34,17 @@ const Login = ({onLogin}) => {
         // API call with CORS fix
         try {
             const response = await axios.post(
-                "https://products-backend-hgk5.onrender.com/login",
-                data,
-                {
-                    headers: { "Content-Type": "application/json" },
-                    withCredentials: true //  Important for cross-origin authentication
-                }
-            );
-            console.log(response.data);
-            alert(response.data.message);
-            onLogin();
-            navigate('/products');
-        } catch (error) {
-            setErrorMessage(error.response ? error.response.data.error : "Login failed");
-            console.log("Login Error:", error);
-        }
-    };
+                "http://localhost:3000/login", data)  //"https://products-backend-hgk5.onrender.com/login"
+                console.log(response.data)
+                alert(response.data.message)
+                onLogin()
+                navigate('/products')
+
+            } catch (error) {
+                setErrorMessage(error.message)
+                console.log(error)
+            }
+    }
     
 
   return (
