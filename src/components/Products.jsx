@@ -8,8 +8,10 @@ const Products = () => {
   const [error, setError] = useState(null);
   
   useEffect(() => {
-    axios.get('http://localhost:3000/products') 
+    // axios.get('http://localhost:3000/products') 
+    axios.get('https://products-backend-hgk5.onrender.com/products')
       .then(response => {
+        console.log('Fetched products:', response.data);
         setProducts(response.data);
         setLoading(false);
       })

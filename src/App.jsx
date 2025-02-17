@@ -5,6 +5,11 @@ import Home from './components/Home';
 import Products from './components/Products';
 import Footer from './components/Footer';
 
+
+const ProtectedRoute = ({ isAuthenticated, children }) => {
+  return isAuthenticated ? children : <Navigate to='/login' />;
+};
+
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -53,8 +58,6 @@ const App = () => {
   );
 };
 
-const ProtectedRoute = ({ isAuthenticated, children }) => {
-  return isAuthenticated ? children : <Navigate to='/login' />;
-};
+
 
 export default App;
