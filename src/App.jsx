@@ -3,6 +3,7 @@ import {BrowserRouter as Router,Routes,Route,Link,Navigate} from 'react-router-d
 import Login from './components/Login'
 import Home from './components/Home'
 import Products from './components/Products'
+import Footer from './components/Footer'
 
 const App = () => {
 
@@ -49,6 +50,7 @@ const App = () => {
         }
         />
       </Routes>
+      <Footer/>
 
     </Router>
   )
