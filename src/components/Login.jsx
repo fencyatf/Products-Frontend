@@ -34,7 +34,7 @@ const Login = ({onLogin}) => {
         // API call with CORS fix
         try {
             const response = await axios.post(
-                "http://localhost:3000/login", data)  //"https://products-backend-hgk5.onrender.com/login"
+                "https://products-backend-hgk5.onrender.com/login", data)  
                 console.log(response.data)
                 alert(response.data.message)
                 onLogin()
